@@ -1,11 +1,6 @@
-# 🚕 Bengaluru Ride-Booking Analytics
+# 🚕 Ola Performance Analytics
 
 A full end-to-end data analytics project simulating one month of ride-hailing operations in Bengaluru — from synthetic data generation and PostgreSQL modeling to Power BI dashboarding and written business analysis.
-
-![Status](https://img.shields.io/badge/status-complete-brightgreen)
-![Python](https://img.shields.io/badge/Python-3.12-blue)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-ready-336791)
-![Power BI](https://img.shields.io/badge/Power%20BI-dashboard-F2C811)
 
 ---
 
@@ -72,50 +67,12 @@ The goal is to demonstrate the analytics workflow used in real ride-hailing oper
 
 ---
 
-## 🗄️ Database Setup
-
-```sql
-CREATE TABLE bengaluru_ride_bookings (
-    id                                  SERIAL PRIMARY KEY,
-    date                                DATE NOT NULL,
-    time                                TIME NOT NULL,
-    booking_id                         TEXT NOT NULL UNIQUE,
-    booking_status                     TEXT NOT NULL,
-    customer_id                        TEXT NOT NULL,
-    vehicle_type                       TEXT NOT NULL,
-    pickup_location                    TEXT NOT NULL,
-    drop_location                      TEXT NOT NULL,
-    avg_vtat                           NUMERIC(5,2),
-    avg_ctat                           NUMERIC(5,2),
-    cancelled_rides_by_customer        INTEGER NOT NULL DEFAULT 0,
-    reason_for_cancelling_by_customer  TEXT,
-    cancelled_rides_by_driver          INTEGER NOT NULL DEFAULT 0,
-    reason_for_cancelling_by_driver    TEXT,
-    incomplete_rides                   INTEGER NOT NULL DEFAULT 0,
-    incomplete_rides_reason            TEXT,
-    booking_value                      NUMERIC(10,2),
-    ride_distance                      NUMERIC(6,2),
-    driver_ratings                     NUMERIC(2,1),
-    customer_rating                    NUMERIC(2,1)
-);
-
-\copy bengaluru_ride_bookings (date, time, booking_id, booking_status, customer_id,
-    vehicle_type, pickup_location, drop_location, avg_vtat, avg_ctat,
-    cancelled_rides_by_customer, reason_for_cancelling_by_customer,
-    cancelled_rides_by_driver, reason_for_cancelling_by_driver,
-    incomplete_rides, incomplete_rides_reason, booking_value, ride_distance,
-    driver_ratings, customer_rating)
-FROM 'data/bengaluru_ride_bookings.csv'
-WITH (FORMAT csv, HEADER true, NULL '');
-```
-
-Full schema with indexes is in [`sql/create_table.sql`](sql/create_table.sql).
-
----
-
 ## 📊 Dashboard
 
 Built in Power BI across five pages: **Overall**, **Vehicle Type**, **Revenue**, **Cancellation**, and **Ratings**.
+
+![image alt](https://github.com/RaaFieL99/Ola-Performance-Analysis/blob/a9d7a38271d20dccdcab596f3f07c9281543ea55/Ola1.png)
+
 
 <!-- Add your own dashboard screenshots here, e.g.: -->
 <!-- ![Overall Dashboard](assets/overview.png) -->
